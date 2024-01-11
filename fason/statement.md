@@ -95,3 +95,7 @@ abc.klm
 12
 INVALID QUERY
 ```
+
+## Special Hints & Notes
+
+For escaping back-slash, you can use ``\\``.
