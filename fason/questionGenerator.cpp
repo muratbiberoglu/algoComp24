@@ -2,10 +2,26 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <sstream>
 #include <stdlib.h>
 #include <time.h>
 
 std::vector<char> alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
+
+std::string number_to_string(int number)
+{
+    std::stringstream ss;
+    std::string str = "";
+
+    if (number < 10)
+        str = "0";
+
+    ss << number;
+    std::string str_num = "";
+    ss >> str_num;
+    str += str_num;
+    return str;
+}
 
 class FasonNode
 {
@@ -63,6 +79,7 @@ public:
 
         return;
     }
+
     void treeFiller(FasonNode *tree)
     {
         if (tree->children_nodes.size() == 0)
@@ -73,8 +90,51 @@ public:
                     treeFiller(child);
     }
 
+    std::pair<std::string, std::string> query_generator(FasonNode *tree, std::string current_query)
+    {
+        int children_size = tree->children_nodes.size();
+
+        current_query += tree->name;
+
+        if (children_size == 0)
+            return {current_query, invalid_message};
+
+        int continue_desicion = rand() % (children_size + 1);
+
+        if (continue_desicion < children_size)
+        {
+            current_query += ".";
+            FasonNode *random_node = tree->children_nodes[continue_desicion];
+            return query_generator(random_node, current_query);
+        }
+
+        std::string result = invalid_message;
+
+        int dice = rand() % 2;
+        if (dice)
+        {
+            current_query += ".";
+            std::string rand_str = generateRandomString();
+
+            for (auto node : tree->children_nodes)
+                if (node->name == rand_str)
+                    return query_generator(node, current_query);
+
+            current_query += rand_str;
+        }
+        else
+        {
+            if (tree->children_nodes.size() == 1)
+                result = tree->children_nodes[0]->name;
+        }
+
+        return {current_query, result};
+    }
+
 private:
     inline static const std::vector<char> alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
+    inline static const std::string invalid_message = "INVALID QUERY";
+
     int string_max_length;
     int node_generation_weight;
     int max_depth;
@@ -127,11 +187,60 @@ int main()
 
     FasonNode *tree = new FasonNode;
 
-    FasonTools toolkit{10, 3, 5};
+    std::string inputFileBaseName = "input/input";
+    std::string outputFileBaseName = "output/output";
 
-    toolkit.treeGenerator(tree, 0);
-    toolkit.treeFiller(tree);
+    std::vector<int> tree_depths = {2, 3, 4, 5, 6};
+    std::vector<int> string_sizes = {5, 10};
+    std::vector<int> tree_biases = {1, 2, 3, 4, 5, 6, 7};
 
+    for (int iteration = 0; iteration < 35; iteration++)
+    {
+        std::string fasonString = "";
+        int fasonSize = 0;
+
+        int tree_bias = tree_biases[iteration % tree_biases.size()];
+        int tree_depth = tree_depths[iteration % tree_depths.size()];
+        int num_queries = tree_depth * tree_bias * 4;
+        int max_str_len = string_sizes[iteration % string_sizes.size()];
+
+        FasonTools toolkit{max_str_len, tree_bias, tree_depth};
+
+        FasonNode *tree = new FasonNode;
+
+        toolkit.treeGenerator(tree, 0);
+        toolkit.treeFiller(tree);
+
+        fasonString = tree->generateFasonString();
+        fasonSize = fasonString.size();
+
+        std::vector<std::pair<std::string, std::string>> queries;
+
+        for (int query_iteration = 0; query_iteration < num_queries; query_iteration++)
+            queries.push_back(toolkit.query_generator(tree, ""));
+
+        std::string file_name = inputFileBaseName + number_to_string(iteration) + ".txt";
+
+        FILE *file = freopen(file_name.c_str(), "w", stdout);
+
+        std::cout << fasonSize << " " << num_queries << "\n";
+        std::cout << fasonString << "\n";
+        for (auto query : queries)
+            std::cout << query.first << "\n";
+
+        fclose(file);
+
+        file_name = outputFileBaseName + number_to_string(iteration) + ".txt";
+
+        file = freopen(file_name.c_str(), "w", stdout);
+
+        for (auto query : queries)
+            std::cout << query.second << "\n";
+
+        fclose(file);
+
+        delete tree;
+    }
 
     return 0;
 }
