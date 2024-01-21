@@ -4,6 +4,7 @@
 #include <vector>
 #include <map>
 #include <stack>
+#include <queue>
 
 using namespace std;
 vector<string> wordList;
@@ -129,13 +130,11 @@ public:
         string answer = "";
 
         Node *currentNode = root;
-        stack<Node *> previousNodes;
         query += currentNode->word;
 
         while (currentNode->children.size() != 1 || currentNode->children[0]->children.size() != 0)
         {
             int randomIndex = rand() % currentNode->children.size();
-            previousNodes.push(currentNode);
             currentNode = currentNode->children[randomIndex];
             query += "." + currentNode->word;
         }
@@ -146,8 +145,56 @@ public:
 
     pair<string, string> invalidTestCaseWrongLeaf()
     {
+        string answer = "-1";
         string query = "";
-        string answer = "";
+        queue<Node *> q;
+
+        Node *currentNode = root;
+        q.push(currentNode);
+        while (currentNode->children.size() != 1 || currentNode->children[0]->children.size() != 0)
+        {
+            int randomIndex = rand() % currentNode->children.size();
+            currentNode = currentNode->children[randomIndex];
+            q.push(currentNode);
+        }
+
+        while (!q.empty() && q.size() > 1)
+        {
+            query += q.front()->word + ".";
+            q.pop();
+        }
+        query += getRandomWord();
+
+        return make_pair(query, answer);
+    }
+
+    pair<string, string> invalidTestCaseStopBranch()
+    {
+        string answer = "-1";
+        string query = "";
+        queue<Node *> q;
+
+        Node *currentNode = root;
+        q.push(currentNode);
+        while (currentNode->children.size() != 1 || currentNode->children[0]->children.size() != 0)
+        {
+            int randomIndex = rand() % currentNode->children.size();
+            currentNode = currentNode->children[randomIndex];
+            q.push(currentNode);
+        }
+
+        int qSize = q.size();
+        if (qSize == 1)
+            return invalidTestCaseWrongLeaf();
+
+        int randomStop = rand() % q.size() - 1;
+
+        for (int i = 0; i < randomStop - 1; i++)
+        {
+            query += q.front()->word + ".";
+            q.pop();
+        }
+        query += q.front()->word;
 
         return make_pair(query, answer);
     }
@@ -159,14 +206,28 @@ int main()
     wordListRead();
 
     Tree tree;
-    tree.recursiveAdd(tree.root, 3, 3);
+    tree.recursiveAdd(tree.root, 4, 4);
     tree.treeFiller();
 
     cout << tree.printTree() << endl;
 
     map<string, string> testCases;
-    while (testCases.size() < 10)
+    while (testCases.size() < 32)
     {
+        if (rand() % 3 == 0)
+        {
+            pair<string, string> testCase = tree.invalidTestCaseWrongLeaf();
+            if (testCases[testCase.first] == "")
+                testCases[testCase.first] = testCase.second;
+            continue;
+        }
+        if (rand() % 3 == 0)
+        {
+            pair<string, string> testCase = tree.invalidTestCaseStopBranch();
+            if (testCases[testCase.first] == "")
+                testCases[testCase.first] = testCase.second;
+            continue;
+        }
         pair<string, string> testCase = tree.geniuineTestCase();
         if (testCases[testCase.first] == "")
             testCases[testCase.first] = testCase.second;
