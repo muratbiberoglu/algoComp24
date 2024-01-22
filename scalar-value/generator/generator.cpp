@@ -7,7 +7,7 @@
 
 using namespace std;
 
-vector<pair<int, int>> generateEulerianCircuit(int nodeCount, int edgeCount)
+vector<pair<int, int>> generatePossibleEulerianCircuit(int nodeCount, int edgeCount)
 {
     map<int, int> in_degrees;
     map<int, int> out_degrees;
@@ -77,12 +77,26 @@ vector<pair<int, int>> generateEulerianCircuit(int nodeCount, int edgeCount)
     return edges;
 }
 
+vector<pair<int, int>> generateRandomGraph(int nodeCount, int edgeCount)
+{
+    vector<pair<int, int>> edges;
+
+    for (int i = 0; i < edgeCount; i++)
+    {
+        int u = (rand() % nodeCount) + 1;
+        int v = (rand() % nodeCount) + 1;
+        edges.push_back({u, v});
+    }
+
+    return edges;
+}
+
 int main()
 {
     srand(time(NULL));
-    int n = 6;
-    int e = 18;
-    vector<pair<int, int>> edges = generateEulerianCircuit(n, e);
+    int n = 3;
+    int e = 3;
+    vector<pair<int, int>> edges = generatePossibleEulerianCircuit(n, e);
 
     for (auto edge : edges)
     {
