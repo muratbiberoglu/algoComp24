@@ -30,7 +30,7 @@ If it is impossible, then print "-1".
 
 ## Output Format
 
-* N number of lines containing either "1" or "-1", the answer of whether given matrices are multipliable.
+* T number of lines containing "1" if given test case yields a scalar value or "-1" if it isn't.
 
 ## Constraints
 
