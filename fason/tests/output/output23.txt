@@ -1,60 +1,156 @@
-INVALID QUERY
-INVALID QUERY
-11rds
-INVALID QUERY
-v4yvme9
-11rds
-INVALID QUERY
-v4yvme9
-INVALID QUERY
-v4yvme9
-11rds
-11rds
-11rds
-INVALID QUERY
-11rds
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-11rds
-INVALID QUERY
-11rds
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-11rds
-11rds
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-11rds
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-v4yvme9
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-v4yvme9
-11rds
-11rds
-INVALID QUERY
-11rds
-11rds
-INVALID QUERY
-11rds
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-11rds
-INVALID QUERY
-11rds
-INVALID QUERY
-INVALID QUERY
+-1
+-1
+-1
+-1
+-1
+members
+daughter
+larger
+pty
+-1
+-1
+-1
+pct
+-1
+-1
+findings
+-1
+compound
+-1
+ss
+sweden
+-1
+jokes
+kennedy
+satin
+-1
+lions
+reservation
+hosting
+-1
+-1
+-1
+-1
+unusual
+-1
+refinance
+expect
+tones
+-1
+aging
+hardcover
+-1
+-1
+-1
+air
+-1
+et
+losses
+campus
+-1
+kenya
+-1
+-1
+-1
+-1
+-1
+cake
+kijiji
+peripherals
+cameron
+-1
+wanted
+-1
+positions
+sum
+-1
+swiss
+-1
+-1
+-1
+-1
+proxy
+-1
+-1
+-1
+-1
+thus
+mississippi
+-1
+-1
+-1
+-1
+-1
+sunday
+-1
+-1
+producers
+classified
+-1
+-1
+jo
+convenient
+appreciated
+-1
+-1
+-1
+demonstrates
+bits
+-1
+why
+-1
+-1
+-1
+charter
+-1
+be
+-1
+assignment
+-1
+-1
+-1
+quotations
+-1
+-1
+pass
+-1
+-1
+weighted
+string
+-1
+boolean
+-1
+laid
+-1
+-1
+maintain
+-1
+-1
+johnson
+-1
+-1
+-1
+wrap
+bachelor
+-1
+nick
+-1
+-1
+bow
+wired
+tgp
+adopt
+isolated
+-1
+-1
+-1
+-1
+bios
+-1
+thirty
+-1
+ranked
+-1
+mo
+abandoned
+-1

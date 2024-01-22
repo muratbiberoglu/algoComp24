@@ -5,12 +5,15 @@
 #include <map>
 #include <stack>
 #include <queue>
+#include <sstream>
 
 using namespace std;
 vector<string> wordList;
 
 void wordListRead()
 {
+    wordList.resize(0);
+
     ifstream file("word_list.txt", ios::in);
     string word;
     while (file >> word)
@@ -22,6 +25,10 @@ void wordListRead()
 
 string getRandomWord()
 {
+    /* ofstream loggingFile("logging.txt", ios::app);
+    loggingFile << "  Word list size: " << wordList.size() << endl;
+    loggingFile.close(); */
+
     int randomIndex = rand() % wordList.size();
     string randomWord = wordList[randomIndex];
     wordList.erase(wordList.begin() + randomIndex);
@@ -66,7 +73,6 @@ public:
             if (children[i] == NULL)
                 continue;
             children[i]->deleteNode();
-            children[i] = NULL;
         }
         delete this;
     }
@@ -198,6 +204,123 @@ public:
 
         return make_pair(query, answer);
     }
+
+    ~Tree()
+    {
+        root->deleteNode();
+    }
+};
+
+class TestCases
+{
+public:
+    vector<int> m = {2, 3, 4, 5, 6};
+    vector<int> d = {2, 2, 3, 3, 4, 4};
+
+    string inputFileBase = "../tests/input/input";
+    string outputFileBase = "../tests/output/output";
+
+    string number_to_string(int number)
+    {
+        stringstream ss;
+        string str = "";
+
+        if (number < 10)
+            str = "0";
+
+        ss << number;
+        string str_num = "";
+        ss >> str_num;
+        str += str_num;
+        return str;
+    }
+
+    string inputFileName(int i)
+    {
+        string fileName = inputFileBase + number_to_string(i) + ".txt";
+        return fileName;
+    }
+
+    string outputFileName(int i)
+    {
+        string fileName = outputFileBase + number_to_string(i) + ".txt";
+        return fileName;
+    }
+
+    int power(int base, int exp)
+    {
+        int result = 1;
+        for (int i = 0; i < exp; i++)
+            result *= base;
+        return result;
+    }
+
+    void generateTestCases()
+    {
+        /* fstream loggingFile("logging.txt", ios::out);
+        loggingFile.close(); */
+
+        for (int i = 0; i < m.size(); i++)
+        {
+            for (int j = 0; j < d.size(); j++)
+            {
+                wordListRead();
+
+                int testCaseCount = power(m[i], d[j]) / 4;
+                int testCaseNumber = (i * d.size()) + j;
+
+                /* ofstream loggingFile("logging.txt", ios::app);
+                loggingFile << "Generating test cases for m = " << m[i] << " and d = " << d[j] << endl;
+                loggingFile << "  Test case count: " << testCaseCount << endl;
+                loggingFile << "  Test case number: " << testCaseNumber << endl;
+                loggingFile.close(); */
+
+                Tree tree;
+                tree.recursiveAdd(tree.root, m[i], d[j]);
+                tree.treeFiller();
+
+                /* loggingFile.open("logging.txt", ios::app);
+                loggingFile << "  Tree created." << endl;
+                loggingFile.close(); */
+
+                map<string, string> testCases;
+                while (testCases.size() < testCaseCount)
+                {
+                    if (rand() % 3 == 0)
+                    {
+                        pair<string, string> testCase = tree.invalidTestCaseWrongLeaf();
+                        if (testCases[testCase.first] == "")
+                            testCases[testCase.first] = testCase.second;
+                        continue;
+                    }
+                    if (rand() % 3 == 0)
+                    {
+                        pair<string, string> testCase = tree.invalidTestCaseStopBranch();
+                        if (testCases[testCase.first] == "")
+                            testCases[testCase.first] = testCase.second;
+                        continue;
+                    }
+                    pair<string, string> testCase = tree.geniuineTestCase();
+                    if (testCases[testCase.first] == "")
+                        testCases[testCase.first] = testCase.second;
+                }
+
+                string treeString = tree.printTree();
+
+                ofstream inputFile(inputFileName(testCaseNumber), ios::out);
+                inputFile << treeString.size() << " " << testCaseCount << endl;
+                inputFile << treeString << endl;
+                for (auto it = testCases.begin(); it != testCases.end(); it++)
+                    inputFile << it->first << endl;
+                inputFile.close();
+
+                ofstream outputFile(outputFileName(testCaseNumber), ios::out);
+                for (auto it = testCases.begin(); it != testCases.end(); it++)
+                    outputFile << it->second << endl;
+                outputFile.close();
+            }
+        }
+    }
 };
 
 int main()
@@ -205,36 +328,8 @@ int main()
     srand(time(NULL));
     wordListRead();
 
-    Tree tree;
-    tree.recursiveAdd(tree.root, 4, 4);
-    tree.treeFiller();
-
-    cout << tree.printTree() << endl;
-
-    map<string, string> testCases;
-    while (testCases.size() < 32)
-    {
-        if (rand() % 3 == 0)
-        {
-            pair<string, string> testCase = tree.invalidTestCaseWrongLeaf();
-            if (testCases[testCase.first] == "")
-                testCases[testCase.first] = testCase.second;
-            continue;
-        }
-        if (rand() % 3 == 0)
-        {
-            pair<string, string> testCase = tree.invalidTestCaseStopBranch();
-            if (testCases[testCase.first] == "")
-                testCases[testCase.first] = testCase.second;
-            continue;
-        }
-        pair<string, string> testCase = tree.geniuineTestCase();
-        if (testCases[testCase.first] == "")
-            testCases[testCase.first] = testCase.second;
-    }
-
-    for (auto it = testCases.begin(); it != testCases.end(); it++)
-        cout << it->first << " " << it->second << endl;
+    TestCases testCases;
+    testCases.generateTestCases();
 
     return 0;
 }

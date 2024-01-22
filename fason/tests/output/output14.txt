@@ -1,24 +1,16 @@
-s1i
-INVALID QUERY
-INVALID QUERY
-s1i
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-s1i
-s1i
-INVALID QUERY
-4ee2
-s1i
-4ee2
-INVALID QUERY
-s1i
-s1i
-4ee2
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-INVALID QUERY
-4ee2
+cover
+-1
+order
+-1
+terminal
+relatives
+-1
+-1
+promo
+nevertheless
+-1
+-1
+concern
+-1
+hist
+-1

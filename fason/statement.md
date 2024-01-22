@@ -53,9 +53,9 @@ cl_1
 From the example above, there are some query results:
 
 ```
-cl_1 -> INVALID QUERY
+cl_1 -> -1
 cl_1.scl_1.var_2 -> val_2
-cl_2.scl_2 -> INVALID QUERY
+cl_2.scl_2 -> -1
 ```
 
 ## Input Format
@@ -66,7 +66,7 @@ cl_2.scl_2 -> INVALID QUERY
 
 ## Output Format
 
-Q lines of query answers. If the query is correct, print the value, otherwise ``INVALID QUERY`` must be printed.
+Q lines of query answers. If the query is correct, print the value, otherwise ``-1`` must be printed.
 
 ## Constraints
 
@@ -78,13 +78,15 @@ Q lines of query answers. If the query is correct, print the value, otherwise ``
 
 * Depth of FASON tree would not exceed $10^2$.
 
+* Note that coming values are strings, even though they might seem like numerical values.
+
 ## Question Example
 
 ### Input
 
 ```
 23 2
-\abc\def\12//\ghi\13///
+\abc\def\asd//\ghi\zxc///
 abc.def
 abc.klm
 ```
@@ -92,8 +94,8 @@ abc.klm
 ### Output
 
 ```
-12
-INVALID QUERY
+asd
+-1
 ```
 
 ## Special Hints & Notes
