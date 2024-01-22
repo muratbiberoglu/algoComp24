@@ -2,7 +2,7 @@
 
 ## Problem Story
 
-One day, Fatih was working on implementing encrypted messaging systems for the bank hosts. While doing so, he came up with an idea. He called it FASON (Fatih’s String Object Notation).
+One day, Fatih was working on implementing encrypted messaging systems for the bank hosts. While doing so, he came up with an idea. He called it FASON (Fatih String Object Notation).
 
 FASON is like JSON, but simpler. In a FASON file, you have a tree structure containing classes, subclasses, variables under those classes, and so on. In FASON trees, leaves are the values of variables and the parent nodes are the variable or class names.
 
@@ -31,7 +31,7 @@ For example, we have this message as a FASON String:
 
 ### FASON Tree
 
-This FASON string's tree structure looks like this:
+This FASON string tree structure looks like this:
 
 ```
 cl_1
@@ -60,9 +60,9 @@ cl_2.scl_2 -> -1
 
 ## Input Format
 
-* The first line contains $N$ the number of characters in the FASON string, and $Q$ the number of queries.
-* The next line contains the $N$-character-long FASON String.
-* The next $Q$ lines contain the queries.
+* The first line contains N the number of characters in the FASON string, and Q the number of queries.
+* The next line contains the N-character-long FASON String.
+* The next Q lines contain the queries.
 
 ## Output Format
 
@@ -70,13 +70,13 @@ Q lines of query answers. If the query is correct, print the value, otherwise ``
 
 ## Constraints
 
-* $N$, the number of characters given in the FASON string would not exceed $2 \times 10^5$.
+* N, the number of characters given in the FASON string would not exceed 2 \times 10^5.
 
-* Number of queries would not exceed $10^3$.
+* Number of queries would not exceed 10^3.
 
-* Total number of characters, with $N$-character-long FASON string and $Q$ queries would not exceed $10^6$.
+* Total number of characters, with N-character-long FASON string and Q queries would not exceed 10^6.
 
-* Depth of FASON tree would not exceed $10^2$.
+* Depth of FASON tree would not exceed 10^2.
 
 * Note that coming values are strings, even though they might seem like numerical values.
 
