@@ -30,7 +30,7 @@ If it is impossible, then print "-1".
 
 ## Output Format
 
-* T number of lines containing "1" if given test case yields a scalar value or "-1" if it isn't.
+* T number of lines containing "1" if given test case yields a scalar value or "-1" if it doesn't.
 
 ## Constraints
 
