@@ -101,6 +101,17 @@ vector<pair<int, int>> generateRandomGraph(int nodeCount, int edgeCount)
     return edges;
 }
 
+template <typename T>
+void shuffle(vector<T> &v)
+{
+    int n = v.size();
+    for (int i = 0; i < n; i++)
+    {
+        int idx = rand() % n;
+        swap(v[i], v[idx]);
+    }
+}
+
 string testGenerated(vector<pair<int, int>> edges)
 {
     bool flag = true;
@@ -171,11 +182,45 @@ string testGenerated(vector<pair<int, int>> edges)
     return "-1";
 }
 
-int main()
+int main(int argc, char **argv)
 {
-    srand(time(NULL));
-    // NUM EDGES, NUM NODES, TYPE (1 - EULERIAN CIRCUIT, 2 - RANDOM GRAPH)
-    vector<tuple<int, int, int>> parameters = {
-        {3, 2, 1}};
+    // Arg 1 -> rand seed
+    // Arg 2 -> min_dimensions
+    // Arg 3 -> max_dimensions
+    // Arg 4 -> num_edges min
+    // Arg 5 -> num_edges max
+    // Arg 6 -> test count
+
+    int rand_seed = stoi(argv[1]);
+    srand(rand_seed);
+
+    int min_dimensions = stoi(argv[2]);
+    int max_dimensions = stoi(argv[3]);
+    int num_edges_min = stoi(argv[4]);
+    int num_edges_max = stoi(argv[5]);
+    int test_count = stoi(argv[6]);
+
+    cout << test_count << endl;
+
+    for (int i = 0; i < test_count; i++)
+    {
+        int nodeCount = (rand() % (max_dimensions - min_dimensions + 1)) + min_dimensions;
+        int edgeCount = (rand() % (num_edges_max - num_edges_min + 1)) + num_edges_min;
+
+        vector<pair<int, int>> edges;
+
+        if (rand() % 2 == 0)
+            edges = generatePossibleEulerianCircuit(nodeCount, edgeCount);
+        else
+            edges = generateRandomGraph(nodeCount, edgeCount);
+
+        shuffle(edges);
+
+        cout << edges.size() << endl;
+
+        for (auto edge : edges)
+            cout << edge.first << " " << edge.second << endl;
+    }
+
     return 0;
 }
