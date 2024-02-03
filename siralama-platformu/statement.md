@@ -29,7 +29,7 @@ Print the number of different platforms that satisfy the given conditions.
 # Sample Input
 ```
 4
-1 4 5 2
+1 3 4 2
 ```
 
 # Sample Output
@@ -40,5 +40,5 @@ Print the number of different platforms that satisfy the given conditions.
 # Sample Explanation
 ```
 The possible platforms:
-1, 4, 5, 2, 1-4, 4-5, 4-5-2, 1-4-5-2
+1, 3, 4, 2, 1-3, 3-4, 3-4-2, 1-3-4-2
 ```
