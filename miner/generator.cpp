@@ -16,6 +16,14 @@ using namespace std;
 
  
 
+string create_string_test_case_number(int test_case){
+    string test_case_number = to_string(test_case);
+    while(test_case_number.size() < 2){
+        test_case_number = "0" + test_case_number;
+    }
+    return test_case_number;
+}
+
 
 int main(){
     /* Compile the solver.cpp */
@@ -29,14 +37,14 @@ int main(){
 
     
     // create test cases
-    for(int test_case = 1; test_case <= NUMBER_OF_TEST_CASES ; test_case++){
+    for(int test_case = 0; test_case < NUMBER_OF_TEST_CASES ; test_case++){
         // create input file
-        string input_file_name = "../tests/input/" + to_string(test_case) + ".txt";
+        string input_file_name = "tests/input/input" + create_string_test_case_number(test_case) + ".txt";
         ofstream input_file(input_file_name);
         
 
         // create output file
-        string output_file_name = "../tests/output/" + to_string(test_case) + ".txt";
+        string output_file_name = "tests/output/output" + create_string_test_case_number(test_case) + ".txt";
         
         // create random number n
         int n = rand() % MAX_NODE_COUNT + 1;
