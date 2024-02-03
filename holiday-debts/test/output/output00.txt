@@ -1,0 +1,5 @@
+1 100 debtor
+2 50 debtor
+3 0
+4 50 payee
+5 100 payee
