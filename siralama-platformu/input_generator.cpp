@@ -35,7 +35,7 @@ void generate_edge_case(ofstream& input, int n){
         }
     }
     else if(k == 1){
-        for (int i = n; i >= 0; i--)
+        for (int i = n; i > 0; i--)
         {
             arr.push_back(i);
         }
