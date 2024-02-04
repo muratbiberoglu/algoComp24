@@ -45,9 +45,10 @@ For each person in the group, output a line with three variables: ~u~, ~v~, and 
 # Sample Output 1
 ```
 1 100 debtor
-2 0
-3 50 debtor
+2 50 debtor
+3 0
 4 50 payee
 5 100 payee
+
 
 ```
