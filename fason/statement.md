@@ -70,7 +70,7 @@ $Q$ lines of query answers. If the query is correct, print the value, otherwise 
 
 ## Constraints
 
-* N, the number of characters given in the FASON string would not exceed $2 \times 10^5$.
+* $N$, the number of characters given in the FASON string would not exceed $2 \times 10^5$.
 
 * Number of queries would not exceed $10^3$.
 
