@@ -9,7 +9,7 @@ FASON is like JSON, but simpler. In a FASON file, you have a tree structure cont
 So, using the knowledge given below, can you help Fatih to implement a FASON interpreter? Some queries will be coming, asking for certain values and the FASON interpreter must return correct values or an error message.
 
 
-## FASON Structure Explaination
+## FASON Structure Explanation
 
 * In a FASON file, there is only one tree.
 
@@ -60,23 +60,23 @@ cl_2.scl_2 -> -1
 
 ## Input Format
 
-* The first line contains N the number of characters in the FASON string, and Q the number of queries.
-* The next line contains the N-character-long FASON String.
-* The next Q lines contain the queries.
+* The first line contains $N$ the number of characters in the FASON string, and $Q$ the number of queries.
+* The next line contains the $N$-character-long FASON String.
+* The next $Q$ lines contain the queries.
 
 ## Output Format
 
-Q lines of query answers. If the query is correct, print the value, otherwise ``-1`` must be printed.
+$Q$ lines of query answers. If the query is correct, print the value, otherwise ``-1`` must be printed.
 
 ## Constraints
 
-* N, the number of characters given in the FASON string would not exceed 2 \times 10^5.
+* $N$, the number of characters given in the FASON string would not exceed $2 \times 10^5$.
 
-* Number of queries would not exceed 10^3.
+* Number of queries would not exceed $10^3$.
 
-* Total number of characters, with N-character-long FASON string and Q queries would not exceed 10^6.
+* Total number of characters, with $N$-character-long FASON string and $Q$ queries would not exceed $10^6$.
 
-* Depth of FASON tree would not exceed 10^2.
+* Depth of FASON tree would not exceed $10^2$.
 
 * Note that coming values are strings, even though they might seem like numerical values.
 
@@ -85,7 +85,7 @@ Q lines of query answers. If the query is correct, print the value, otherwise ``
 ### Input
 
 ```
-23 2
+25 2
 \abc\def\asd//\ghi\zxc///
 abc.def
 abc.klm
