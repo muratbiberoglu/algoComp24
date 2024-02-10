@@ -7,12 +7,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define MAX_NODE_VALUE 1000
-#define MAX_EDGE_VALUE 1000
+#define MAX_NODE_VALUE 100
+#define MAX_EDGE_VALUE 100
 #define MAX_TEST_CASES 40 
-#define MAX_NODE_COUNT 40
-#define MAX_K_VALUE 40
-#define NUMBER_OF_TEST_CASES 5
+#define MAX_NODE_COUNT 10000
+#define MAX_K_VALUE 500
+#define NUMBER_OF_TEST_CASES 40
 
  
 
