@@ -1,32 +1,14 @@
 # algoComp24
 
-## Qualification Questions
-- Aç Ağzını
-- Dijkstra Varyantı
-- Dikdörtgen Bölme
-- En İyi Olmak Uğruna
-- FASON
-- Holiday Debts
-- Kominity Needs Tadano
-- Rebuild Tree
-- Scalar Value
-- Sıralama Platformu 1
+- Problem Tracking Sheet: [Link](https://docs.google.com/spreadsheets/d/1v6qZxHAy5ZHZ0vSjvHNoDhwyct7KSOEZTcj8eJbWOCs/edit#gid=1999655058)
+- Problem Statement Docs: [Link](https://drive.google.com/drive/folders/1MkFQo62ZGbt2gF-4Ajz6c_Ex-C96VC95)
 
-## Final Questions
-- Bu Bana Çok Ters
-- Connect Us
-- Doldur Hocam
-- Face of Melinda
-- Sıralama Platformu 2
-- Unique Question Name
-- 3-stacks
+## Qualification - Feb 11, 2024
 
-## Stage Is Not Certain
-- Character Creation
-- Graph-String
-- [Knight Problem](./knight-problem/)
+Contest: [Link](https://algoleague.com/contest/algocomp24-qualification-round/)
 
-# Not Certain To Ask or Not
-- Komi Can Kominicate
-- Postgre Ömer
-- Türlü
+| Problem                | Topics         |
+| ---------------------- | -------------- |
+| Travel of Moody Friend | Shortest Paths |
+
+## Final - Feb 24, 2024

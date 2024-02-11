@@ -1,0 +1,10 @@
+1 853 payee
+2 300 debtor
+3 300 debtor
+4 103 debtor
+5 300 debtor
+6 135 payee
+7 81 debtor
+8 300 debtor
+9 300 debtor
+10 696 payee
