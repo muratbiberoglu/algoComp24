@@ -8,9 +8,9 @@
 using namespace std;
 
 #define MAX_NODE_VALUE 100
-#define MAX_EDGE_VALUE 100
-#define MAX_NODE_COUNT 10000
-#define MAX_K_VALUE 500
+#define MAX_EDGE_VALUE 6
+#define MAX_NODE_COUNT 1000
+#define MAX_K_VALUE 32
 #define NUMBER_OF_TEST_CASES 20
 
  
