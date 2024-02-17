@@ -1,6 +1,6 @@
 # Character Creation
 
-One day, Berke have decided to design a new game, AlgoComp Scrolls. In this game, every character has two attributes, attack and defence points. A character can slay another character if its attack point is strictly greater than other character's defence point and defence point is strictly greater than other character's attack point.
+One day, Berke have decided to design a new game, AlgoComp Scrolls. In this game, every character has two attributes, attack and defense points. A character can slay another character if its attack point is strictly greater than other character's defense point and defense point is strictly greater than other character's attack point.
 
 **For example:**
 Let's say a player has 10 attack points and 5 defense points.
@@ -17,8 +17,6 @@ Berke has banked his $P$ attribute points and he will enter the PVP arena, and h
 
 Therefore, Berke must be very wise about investing his $P$ points. Since he can pick any enemy he wants to fight with, he can calculate the best possible combination of attack and defense points beforehand and start combat. But he needs to decide fast! Can you help him to implement such an algorithm to make him do his best in the PVP arena, by slaying the most enemies possible?
 
-Note that Berke must invest all of his $P$ points and if there are more than one answer, print the combination with most attack points.
-
 ## Input Format:
 
 - First line contains $N$, number of enemies, $A$, Berke's initial attack attribute, $D$, his initial defense attribute and $P$, his banked points he can invest in his attributes.
@@ -26,6 +24,13 @@ Note that Berke must invest all of his $P$ points and if there are more than one
 
 ## Output Format:
 
-$A$ and $D$, the best combination of attack and defense attributes of Berke that he can slay the most enemies with.
+- $S$, Maximum number of enemies that Berke can slay. 
 
+## Constraints
 
+- $1 \leq N \leq 10^6$
+- $1 \leq A \leq 10^6$
+- $1 \leq D \leq 10^6$
+- $1 \leq P \leq 10^6$
+- $1 \leq a_i \leq 10^6$
+- $1 \leq b_i \leq 10^6$
