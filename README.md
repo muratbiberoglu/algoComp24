@@ -7,8 +7,24 @@
 
 Contest: [Link](https://algoleague.com/contest/algocomp24-qualification-round/)
 
-| Problem                | Topics         |
-| ---------------------- | -------------- |
-| Travel of Moody Friend | Shortest Paths |
+| Problem                   | Topics                                |
+| ------------------------- | ------------------------------------- |
+| Rebuild Tree              | trees                                 |
+| En İyi Olmak Uğruna       | binary search, prefix sum, sorting    |
+| Komi Can Kominicate       | math, number theory                   |
+| FASON                     | implementation, trees                 |
+| Mizu                      | binary search, geometry, math         |
+| Holiday Debts             | implementation                        |
+| Scalar Value              | graph                                 |
+| Sıralama Platformu        | brute force, implementation           |
+| Miner                     | dynamic programming                   |
+| Knights of Commencis      | dynamic programming                   |
+| Aç Ağzını                 | data structures                       |
+| Travel of Moody Friend    | graph, shortest path                  |
 
 ## Final - Feb 24, 2024
+
+Contenst: [Link]()
+
+| Problem                   | Topics                                |
+| ------------------------- | ------------------------------------- |
