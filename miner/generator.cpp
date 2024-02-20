@@ -7,12 +7,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define MAX_NODE_VALUE 1000
-#define MAX_EDGE_VALUE 1000
-#define MAX_TEST_CASES 40 
-#define MAX_NODE_COUNT 40
-#define MAX_K_VALUE 40
-#define NUMBER_OF_TEST_CASES 5
+#define MAX_NODE_VALUE 100
+#define MAX_EDGE_VALUE 6
+#define MAX_NODE_COUNT 1000
+#define MAX_K_VALUE 32
+#define NUMBER_OF_TEST_CASES 20
 
  
 
@@ -26,6 +25,7 @@ string create_string_test_case_number(int test_case){
 
 
 int main(){
+    srand(time(NULL));
     /* Compile the solver.cpp */
     string solver_compile_command = "g++ solver.cpp -o solver";
     system(solver_compile_command.c_str());
@@ -77,12 +77,20 @@ int main(){
         }
 
         // create edges for full binary tree
-        for(int i=1 ; i <= ( n/2 ) ; i++){
+        for(int i=1 ; i <= ( (n-1)/2 ) ; i++){
             int a = nodes[i];
             int b = nodes[2*i];
             int c = rand() % MAX_EDGE_VALUE + 1;
             input_file << a << " " << b << " " << c << "\n";
             b = nodes[2*i + 1];
+            input_file << a << " " << b << " " << c << "\n";
+        }
+
+        // add one more edge for the last node if n is even
+        if(n%2 == 0){
+            int a = nodes[n/2];
+            int b = nodes[n];
+            int c = rand() % MAX_EDGE_VALUE + 1;
             input_file << a << " " << b << " " << c << "\n";
         }
 
@@ -94,9 +102,6 @@ int main(){
         system(solver_command.c_str());
 
     }
-
-
-
 }
 
 
