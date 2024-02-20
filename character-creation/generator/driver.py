@@ -1,5 +1,5 @@
 import os
-from random import randint
+from random import shuffle
 
 # Get the directory of the current script
 script_directory = os.path.dirname(os.path.abspath(__file__))
@@ -43,6 +43,8 @@ if __name__ == "__main__":
     os.system(f"g++ {number_generator_file}.cpp -o {number_generator_file}")
     os.system(f"g++ {solution_file}.cpp -o {solution_file}")
     print("Compiled cpp files")
+
+    shuffle(params)
 
     for question_test in range(len(params)):
         n, llc, ulc, llm, ulm = params[question_test]
