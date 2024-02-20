@@ -1,13 +1,13 @@
 # Character Creation
 
-One day, Berke have decided to design a new game, AlgoComp Scrolls. In this game, every character has two attributes, attack and defense points. A character can slay another character if its attack point is strictly greater than other character's defense point and defense point is strictly greater than other character's attack point.
+One day, Berke have decided to design a new game, AlgoComp Scrolls. In this game, every character has two attributes, attack and defense points. A character can slay another character if its attack point is greater or equal to other character's defense point and defense point is greater or equal to other character's attack point.
 
 **For example:**
 Let's say a player has 10 attack points and 5 defense points.
 
-- He can slay another character with 4 attack and 9 defnse points.
-- He can't slay another character with 4 attack and 10 defense points.
-- He can't slay another character with 5 attack and 9 defense points.
+- He can slay an enemy with 5 attack and 10 defense points.
+- He can't slay an enemy with 5 attack and 11 defense points.
+- He can't slay an enemy with 6 attack and 10 defense points.
 
 Berke has created a character with $A$ attack points and $D$ defense points. Then he completed some quests in the game and he is able to invest $P$ attribute points on his attack and defense points.
 
