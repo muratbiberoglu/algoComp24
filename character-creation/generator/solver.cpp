@@ -68,10 +68,10 @@ int main(int argc, char *argv[])
 {
     string file_number = argv[1];
 
-    int n = 0;
-    int a = 0;
-    int d = 0;
-    int p = 0;
+    int number_of_enemies = 0;
+    int player_attack = 0;
+    int player_defense = 0;
+    int banked_points = 0;
 
     string input_file = "tests/input" + file_number + ".txt";
     string output_file = "tests/output" + file_number + ".txt";
@@ -81,12 +81,13 @@ int main(int argc, char *argv[])
 
     assert(inFile.is_open());
 
-    inFile >> n >> a >> d >> p;
+    cout << "Solving test case " << file_number << "..." << endl;
 
-    // cout << n << " " << a << " " << d << " " << p << endl;
-    vector<pair<int, int>> monsters(n, {0, 0});
+    inFile >> number_of_enemies >> player_attack >> player_defense >> banked_points;
 
-    for (int i = 0; i < n; i++)
+    vector<pair<int, int>> monsters(number_of_enemies, {0, 0});
+
+    for (int i = 0; i < number_of_enemies; i++)
     {
         inFile >> monsters[i].first >> monsters[i].second;
     }
@@ -95,20 +96,27 @@ int main(int argc, char *argv[])
 
     vector<pair<int, int>> filtered_monsters;
 
-    // Depending on strictly snaller or equal to the treshold
-    int monster_max_attack_treshold = max(d + p - 1, 0);
-    int monster_max_defense_treshold = max(a + p - 1, 0);
-    int monster_max_points_treshold = max(a + d + p - 2, 0);
+    // Tresholds from the player
+    int monster_max_attack_treshold = player_defense + banked_points;
+    int monster_max_defense_treshold = player_attack + banked_points;
+    int monster_max_total_treshold = player_attack + player_defense + banked_points;
 
-    for (int i = 0; i < n; i++)
-        if (monsters[i].first <= monster_max_attack_treshold &&
-            monsters[i].second <= monster_max_defense_treshold &&
-            monsters[i].first + monsters[i].second <= monster_max_points_treshold)
+    // Filter the monsters
+    for (int i = 0; i < number_of_enemies; i++)
+    {
+        int monster_attack = monsters[i].first;
+        int monster_defense = monsters[i].second;
+        int monster_total = monster_attack + monster_defense;
+        if (monster_attack <= monster_max_attack_treshold && monster_defense <= monster_max_defense_treshold && monster_total <= monster_max_total_treshold)
+        {
             filtered_monsters.push_back(monsters[i]);
+        }
+    }
 
+    // Sort the monsters by their attack
     sort(filtered_monsters.begin(), filtered_monsters.end());
 
-    SegmentTree st(a + p + 1);
+    SegmentTree st(player_attack + banked_points + 1);
 
     int max_total = 0;
 
@@ -117,22 +125,31 @@ int main(int argc, char *argv[])
         int monster_attack = filtered_monsters[i].first;
         int monster_defense = filtered_monsters[i].second;
 
-        // canavar 7 vursa bende 5 defans olsa, 7 - 4 = 3 lazım
-        int required_for_defense = max(0, monster_attack - (d - 1));
-        int available_points = p - required_for_defense;
+        int required_points_for_defense = max(0, monster_attack - player_defense);
 
-        // canavar'ın 6 defansı var, benim 5 attack'im var, 6 - 4 = 2 lazım
-        int required_for_attack = max(0, monster_defense - (a - 1));
-        if (required_for_attack > available_points)
+        // If the monster attack is greater than the player defense + required points for defense
+        if (monster_attack > player_defense + required_points_for_defense)
             continue;
 
+        int remaining_points_for_attack = max(0, banked_points - required_points_for_defense);
+        int player_max_attack = player_attack + remaining_points_for_attack;
+
+        // If the monster defense is greater than the player max attack
+        if (monster_defense > player_max_attack)
+            continue;
+
+        // Segment tree operations
         st.update(monster_defense, 1);
-        int total_attack = a + available_points;
-        int max_query = st.query(0, total_attack);
-        max_total = max(max_total, max_query);
+        max_total = max(max_total, st.query(0, player_max_attack));
     }
 
-    cout << max_total << endl;
+    ofstream outFile;
+    outFile.open(output_file);
+    assert(outFile.is_open());
+    outFile << max_total << endl;
+    outFile.close();
+
+    cout << "Test case " << file_number << " solved." << endl;
 
     return 0;
 }
