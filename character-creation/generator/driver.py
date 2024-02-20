@@ -12,26 +12,32 @@ solution_file = "solver"
 
 
 params = [
-    # min_dim, max_dim, num_edge_min, num_edge_max, num_test
-    # 10
-    ("01", 10, 5, 10, 3),
-    ("02", 20, 200, 100, 50),
-    ("03", 50, 20000, 30000, 5000),
-    ("04", 100, 400, 800, 200),
-    ("05", 200, 16000, 14000, 1000),
-    ("06", 500, 200000, 500000, 150000),
-    ("07", 1000, 20, 30, 5),
-    ("08", 2000, 800000, 800000, 200000),
-    ("09", 5000, 550, 850, 250),
-    ("10", 10000, 100000, 200000, 50000),
-    ("11", 20000, 500000, 10000, 200000),
-    ("12", 50000, 800000, 200000, 500000),
-    ("13", 100000, 10000, 2000, 5000),
-    ("14", 200000, 200000, 400000, 10000),
-    ("15", 500000, 2000, 4000, 1000),
-    ("16", 1000000, 240000, 360000, 40000)
+    # n, llc, ulc, llm, ulm
+    # 0
+    (5, 3, 8, 1, 10),
+    # 1
+    (10, 8, 16, 5, 20),
+    (20, 15, 30, 10, 40),
+    (50, 30, 60, 20, 80),
+    # 2
+    (100, 60, 120, 40, 160),
+    (200, 120, 240, 80, 320),
+    (500, 300, 600, 200, 800),
+    # 3
+    (1000, 600, 1200, 400, 1600),
+    (2000, 1200, 2400, 800, 3200),
+    (5000, 3000, 6000, 2000, 8000),
+    # 4
+    (10000, 6000, 12000, 4000, 16000),
+    (20000, 12000, 24000, 8000, 32000),
+    (50000, 30000, 60000, 20000, 80000),
+    # 5
+    (100000, 60000, 120000, 40000, 160000),
+    (200000, 120000, 240000, 80000, 320000),
+    (500000, 300000, 600000, 200000, 800000),
+    #
+    (1000000, 300000, 600000, 200000, 800000)
 ]
-
 
 if __name__ == "__main__":
     os.system(f"g++ {number_generator_file}.cpp -o {number_generator_file}")
@@ -39,11 +45,17 @@ if __name__ == "__main__":
     print("Compiled cpp files")
 
     for question_test in range(len(params)):
-        question_number, n, a, d, p = params[question_test]
+        n, llc, ulc, llm, ulm = params[question_test]
+        tnum = str(question_test).zfill(2)
+        input_file = f"tests/input{tnum}.txt"
+        output_file = f"tests/output{tnum}.txt"
 
         # generate numbers
-        os.system(f"./{number_generator_file} {question_number} {n} {a} {d} {p}")
+        print(f"Generating test #{question_test}")
+        os.system(f"./{number_generator_file} {n} {llc} {ulc} {llm} {ulm} > ./{input_file}")
+                
         # solve
-        os.system(f"./{solution_file} {question_number}")
+        print(f"Solving test #{question_test}")
+        os.system(f"./{solution_file} < ./{input_file} > ./{output_file}")
 
-        print(f"Generated and solved test #{question_number}")
+        print(f"Generated and solved test #{tnum}")

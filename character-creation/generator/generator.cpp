@@ -5,36 +5,29 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
     srand(time(0));
 
-    string test_case = argv[1];
+    int n = atoi(argv[1]);
+    int lower_limit_char = atoi(argv[2]);
+    int upper_limit_char = atoi(argv[3]);
+    int lower_limit_monster = atoi(argv[4]);
+    int upper_limit_monster = atoi(argv[5]);
 
-    int n = atoi(argv[2]);
-    int a = atoi(argv[3]);
-    int d = atoi(argv[4]);
-    int p = atoi(argv[5]);
+    int a = rand() % (upper_limit_char - lower_limit_char + 1) + lower_limit_char;
+    int d = rand() % (upper_limit_char - lower_limit_char + 1) + lower_limit_char;
+    int p = rand() % (min(upper_limit_char, upper_limit_monster) - max(lower_limit_char, lower_limit_monster) + 1) + max(lower_limit_char, lower_limit_monster);
 
-    int attack_max = 5 * (d + p) / 4;
-    int defense_max = 5 * (a + p) / 4;
-    if (attack_max > MAX)
-        attack_max = MAX;
-
-    if (defense_max > MAX)
-        defense_max = MAX;
-
-    string file_name = "tests/input" + test_case + ".txt";
-
-    ofstream file;
-    file.open(file_name);
-
-    file << n << " " << a << " " << d << " " << p << endl;
+    cout << n << " " << a << " " << d << " " << p << endl;
 
     for (int i = 0; i < n; i++)
     {
-        int attack = rand() % attack_max + 1;
-        int defense = rand() % defense_max + 1;
-
-        file << attack << " " << defense << endl;
+        int attack = rand() % (upper_limit_monster - lower_limit_monster + 1) + lower_limit_monster;
+        int defense = rand() % (upper_limit_monster - lower_limit_monster + 1) + lower_limit_monster;
+        cout << attack << " " << defense << endl;
     }
 
     return 0;
