@@ -5,7 +5,7 @@ using namespace std;
 int main() {
     srand(0);
 
-    for (int i = 1; i <= 15; i++) {
+    for (int i = 0; i < 15; i++) {
         stringstream ss;
         ss << "tests/input/input" << setw(2) << setfill('0') << i << ".txt";
         string filename = ss.str();
@@ -26,7 +26,7 @@ int main() {
 
         string s;
         int n;
-        switch (i % 3)
+        switch ((i+1) % 3)
         {
         case 0:
         {
