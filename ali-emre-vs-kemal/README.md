@@ -32,7 +32,7 @@ For each test case, print `YES` if the knight can reach the target cell without 
 ## Sample Input 1
 
 ```
-3
+4
 6 2 2
 ______
 __P___
@@ -54,6 +54,13 @@ _PP___
 ___BK_
 ______
 _R____
+6 3 4
+_B____
+__R___
+__P___
+______
+__K___
+______
 ```
 
 ## Sample Output 1
@@ -61,5 +68,6 @@ _R____
 ```
 YES
 YES
+NO
 NO
 ```

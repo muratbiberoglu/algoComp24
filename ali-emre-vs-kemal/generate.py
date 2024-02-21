@@ -4,16 +4,21 @@ from random import randint
 generator_file = "generator"
 solution_file = "solution"
 
-t_n_p_r_b_s = [[20, 100, 1000, 5, 5, 5], [20, 100, 2000, 5, 5, 5]]
+MAX_ROOK = 6
+MAX_BISHOP = 6
+
+# t_n_p_s = [[20, 100, 2500, 2], [20, 100, 3000, 3], [20, 100, 4000, 3], [20, 100, 4500, 2]]
+t_n_p_s = [[5, 500, 90000, 2], [5, 500, 100000, 3], [5, 500, 102000, 3], [5, 500, 105000, 2]]
 tnprbs = []
-for t, n, p, r, b, i in t_n_p_r_b_s:
+for t, n, p, i in t_n_p_s:
     while i:
-        tnprbs.append([t, n, p, r, b])
+        tnprbs.append([t, n, p, randint(1, MAX_ROOK), randint(1, MAX_BISHOP)])
+        print(tnprbs[-1])
         i -= 1
 
 if __name__ == "__main__":
-    os.system(f"g++ {generator_file}.cpp -o {generator_file}")
-    os.system(f"g++ {solution_file}.cpp -o {solution_file}")
+    os.system(f"g++-13 {generator_file}.cpp -o {generator_file}")
+    os.system(f"g++-13 {solution_file}.cpp -o {solution_file}")
     print("Compiled cpp files")
 
     for i in range(len(tnprbs)):

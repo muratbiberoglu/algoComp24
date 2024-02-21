@@ -30,7 +30,7 @@ void printGrid(vector<vector<ll>>& grid) {
     }
 }
 
-void fill(vector<vector<ll>>& grid, vector<pll>& pieces, const vector<pll>& directions) {
+void fill(vector<vector<ll>>& grid, vector<pll>& pieces, const vector<pll>& directions, bool isKnight = false) {
     priority_queue<plll, vector<plll>, greater<plll>> pq;
     for (const auto [r, c] : pieces) {
         grid[r][c] = 0;
@@ -49,6 +49,7 @@ void fill(vector<vector<ll>>& grid, vector<pll>& pieces, const vector<pll>& dire
         for (const auto [dr, dc] : directions) {
             ll i = 1;
             while (true) {
+                if (i == 2 && isKnight) break;
                 auto newR = r + dr * i;
                 auto newC = c + dc * i;
                 if (!inGrid(newR, newC))
@@ -127,7 +128,7 @@ int solve() {
 
     // move knight
     vector<pll> knights{{kr, kc}};
-    fill(grid, knights, knightDirections);
+    fill(grid, knights, knightDirections, true);
 
 #ifdef DEBUG
     printf("-----------------------------\n");

@@ -44,7 +44,8 @@ int main(int argc, char* argv[]) {
     ios::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    srand(atoi(argv[1]));
+    // srand(atoi(argv[1]));
+    srand(time(nullptr));
 
     int t = atoi(argv[2]);
     int n = atoi(argv[3]);
