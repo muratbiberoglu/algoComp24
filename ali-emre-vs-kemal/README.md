@@ -25,7 +25,7 @@ For each test case, print `YES` if the knight can reach the target cell without 
 
 ## Constraints
 
-- $1 \leq t \leq 10$
+- $1 \leq t \leq 5$
 - $1 \leq n \leq 500$
 - $1 \leq r_{target}, c_{target} \leq n$
 
