@@ -2,7 +2,7 @@
 
 using namespace std;
 
-using edge = pair<int, bool>;
+using edge = pair<int, bool&>;
 
 vector<vector<edge>> graph;
 vector<int> low, tin;
@@ -36,6 +36,12 @@ void dfs2(int node) {
     }
 }
 
+void find_bridges(int n) {
+    for (int i = 0; i < n; i++)
+        if (!visited[i])
+            dfs(i);
+}
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -47,17 +53,18 @@ int main() {
     tin = vector<int>(n, -1);
     low = vector<int>(n, -1);
     visited = vector<bool>(n, false);
+    bool bridge[m] = {false};
     int u, v;
     while (m--) {
         cin >> u >> v;
         u--;
         v--;
-        graph[u].push_back({v, false});
-        graph[v].push_back({u, false});
+        graph[u].push_back({v, bridge[m]});
+        graph[v].push_back({u, bridge[m]});
     }
 
     // mark bridges with Tarjan's Back Edge Algorithm
-    dfs(0);
+    find_bridges(n);
 
     // count the number of components on the bridge tree
     int component_counter = 0;
