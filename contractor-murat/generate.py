@@ -4,7 +4,7 @@ from random import randint
 generator_file = "generator"
 solution_file = "solution2"
 
-n_q_i_s = [[10, 100, 2], [100, 500000, 2], [100, 1000000, 2]]
+n_q_i_s = [[10, 50, 3], [50, 1000, 3], [100, 20000, 2], [100, 1000000, 2]]
 nms = [[n, m] for n, m, i in n_q_i_s for _ in range(i)]
 
 if __name__ == "__main__":

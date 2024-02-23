@@ -17,7 +17,7 @@ Print the answer for the corresponding query.
 # Constraints
 
 - $1 \leq n \leq 10^2$
-- $1 \leq q \leq 5 \cdot 10^5$
+- $1 \leq q \leq 10^6$
 - $1 \leq r_1 \leq r_2 \leq n$
 - $1 \leq c_1 \leq c_2 \leq n$
 - $1 \leq h_{r, c} \leq 10^6$
