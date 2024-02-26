@@ -9,7 +9,7 @@ if __name__ == "__main__":
     os.system(f"g++ {solution_file}.cpp -o {solution_file}")
     print("Compiled cpp files")
 
-    for t in range(15):
+    for t in range(22, 24):
         tnum = str(t).zfill(2)
 
         input_file = f"tests/input/input{tnum}.txt"
